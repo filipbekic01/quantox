@@ -3,7 +3,6 @@
 namespace School\Service\Student\Report;
 
 use School\Model\Student;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
 
 class StudentReportCSMStrategy implements StudentReportStrategyInterface
 {

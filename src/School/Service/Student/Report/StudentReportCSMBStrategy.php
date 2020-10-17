@@ -3,9 +3,6 @@
 namespace School\Service\Student\Report;
 
 use School\Model\Student;
-use Symfony\Component\Serializer\Encoder\XmlEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
 
 class StudentReportCSMBStrategy implements StudentReportStrategyInterface
 {
