@@ -21,3 +21,11 @@ Use Symfony server to run application instead of NGINX or Apache.
 ```
 ./server server:start --port=5005 --dir=web
 ```
+
+## Test
+
+There are two trivial tests but they work, you can execute them.
+
+```
+php vendor/bin/phpunit
+```
