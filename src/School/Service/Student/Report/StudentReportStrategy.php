@@ -11,10 +11,10 @@ class StudentReportStrategy
     public function __construct($strategy)
     {
         switch ($strategy) {
-            case StudentBoardEnum::$CSM:
+            case StudentBoardEnum::CSM:
                 $this->strategy = new StudentReportCSMStrategy();
                 break;
-            case StudentBoardEnum::$CSMB:
+            case StudentBoardEnum::CSMB:
                 $this->strategy = new StudentReportCSMBStrategy();
                 break;
         }
