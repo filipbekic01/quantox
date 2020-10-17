@@ -1,5 +1,6 @@
 <?php
 
+use PHPUnit\Util\Json;
 use Quantox\Framework;
 use School\Repository\StudentRepository;
 use School\Service\Student\Report\StudentReportService;
@@ -9,6 +10,10 @@ use Symfony\Component\EventDispatcher;
 use Symfony\Component\HttpFoundation;
 use Symfony\Component\HttpKernel;
 use Symfony\Component\Routing;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 $container = new DependencyInjection\ContainerBuilder();
 $container->register('request_stack', HttpFoundation\RequestStack::class);
@@ -27,7 +32,12 @@ $container->register('listener.router', HttpKernel\EventListener\RouterListener:
 $container->register('dispatcher', EventDispatcher\EventDispatcher::class)
     ->addMethodCall('addSubscriber', [new Reference('listener.router')]);
 
-// My custom services are registered here.
+// Serializers
+$container->register('json_encoder', JsonEncoder::class);
+$container->register('xml_serializer', Serializer::class)
+    ->setArguments([[new ObjectNormalizer()], [new XmlEncoder()]]);
+
+// School application
 $container->register('student_repository', StudentRepository::class);
 $container->register('student_report_service', StudentReportService::class);
 
