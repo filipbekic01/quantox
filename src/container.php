@@ -1,6 +1,7 @@
 <?php
 
 use Quantox\Framework;
+use School\Repository\StudentRepository;
 use Symfony\Component\DependencyInjection;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\EventDispatcher;
@@ -26,7 +27,7 @@ $container->register('dispatcher', EventDispatcher\EventDispatcher::class)
     ->addMethodCall('addSubscriber', [new Reference('listener.router')]);
 
 // My custom services are registered here.
-// ...
+$container->register('student_repository', StudentRepository::class);
 
 // Finally register framework with all required dependencies.
 $container->register('framework', Framework::class)
