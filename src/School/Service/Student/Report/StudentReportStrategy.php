@@ -2,6 +2,8 @@
 
 namespace School\Service\Student\Report;
 
+use School\Enum\StudentBoardEnum;
+
 class StudentReportStrategy
 {
     private $strategy = null;
@@ -9,10 +11,10 @@ class StudentReportStrategy
     public function __construct($strategy)
     {
         switch ($strategy) {
-            case "csm":
+            case StudentBoardEnum::$CSM:
                 $this->strategy = new StudentReportCSMStrategy();
                 break;
-            case "csmb":
+            case StudentBoardEnum::$CSMB:
                 $this->strategy = new StudentReportCSMBStrategy();
                 break;
         }
