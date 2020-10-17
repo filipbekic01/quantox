@@ -5,12 +5,12 @@ use Symfony\Component\Routing\Route;
 
 $routes = new RouteCollection();
 
-$index = new RouteCollection();
-$index->add('', new Route('/students/{id}', [
-    '_controller' => '\School\Controller\SchoolController::index'
+$routes->add('', new Route('/', [
+    '_controller' => '\School\Controller\StudentController::index'
 ]));
-// $index->setMethods(['POST']);
 
-$routes->addCollection($index);
+$routes->add('student', new Route('/students/{id}', [
+    '_controller' => '\School\Controller\StudentController::get'
+]));
 
 return $routes;

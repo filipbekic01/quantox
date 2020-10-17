@@ -10,10 +10,10 @@ class StudentRepository
 
     public function __construct()
     {
-        $this->students[] = new Student(1, "Filip Filipovic", "CSM", [9, 8, 9, 10]);
-        $this->students[] = new Student(2, "Pera Peric", "CSM", [6, 6, 9, 5]);
-        $this->students[] = new Student(3, "Mitar Miric", "CSMB", [10, 6, 7, 6]);
-        $this->students[] = new Student(4, "Zoran Zoric", "CSMB", [10, 9, 7, 8]);
+        $this->students[] = new Student(1, "Filip Filipovic", "csm", [9, 8, 9, 10]);
+        $this->students[] = new Student(2, "Pera Peric", "csmb", [6, 6, 9, 5]);
+        $this->students[] = new Student(3, "Mitar Miric", "csm", [10, 6, 7, 6]);
+        $this->students[] = new Student(4, "Zoran Zoric", "csmb", [10, 9, 7, 8]);
     }
 
     public function findById(int $id): ?Student
