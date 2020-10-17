@@ -11,6 +11,25 @@ class StudentReportCSMStrategy implements StudentReportStrategyInterface
     {
         $jsonEncoder = new JsonEncoder();
 
-        return $jsonEncoder->encode($student, 'json');
+        $pass = $this->pass($student->getGrades());
+
+        return $jsonEncoder->encode([
+            'pass' => $pass,
+            'student' => $student
+        ], 'json');
+    }
+
+    public function pass(array $grades): bool
+    {
+        $sum = 0;
+        foreach ($grades as $grade) {
+            $sum += $grade;
+        }
+
+        if ($sum / count($grades) >= 7) {
+            return true;
+        }
+
+        return false;
     }
 }
