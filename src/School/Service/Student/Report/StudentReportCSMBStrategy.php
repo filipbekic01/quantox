@@ -11,14 +11,20 @@ class StudentReportCSMBStrategy implements StudentReportStrategyInterface
 {
     public function getReport(Student $student): string
     {
-        $serializer = new Serializer([new ObjectNormalizer()], [new XmlEncoder()]);
+        $this->setHeaderContentType();
 
         $pass = $this->pass($student->getGrades());
 
+        $serializer = new Serializer([new ObjectNormalizer()], [new XmlEncoder()]);
         return $serializer->serialize([
             'pass' => $pass,
             'student' => $student
         ], 'xml');
+    }
+
+    public function setHeaderContentType(): void
+    {
+        header('Content-Type: application/xml');
     }
 
     public function pass(array $grades): bool

@@ -9,14 +9,20 @@ class StudentReportCSMStrategy implements StudentReportStrategyInterface
 {
     public function getReport(Student $student): string
     {
-        $jsonEncoder = new JsonEncoder();
+        $this->setHeaderContentType();
 
         $pass = $this->pass($student->getGrades());
 
+        $jsonEncoder = new JsonEncoder();
         return $jsonEncoder->encode([
             'pass' => $pass,
             'student' => $student
         ], 'json');
+    }
+
+    public function setHeaderContentType(): void
+    {
+        header('Content-Type: application/json');
     }
 
     public function pass(array $grades): bool
